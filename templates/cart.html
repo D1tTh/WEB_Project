@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='pages/toys.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pages/card.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pages/cartCard.css') }}">
+    <title>Erke</title>
+{% endblock %}
+
+{% block main %}
+<main class="main">
+    <h1 class="h1-heading-of-page h1-corrector">Shopping cart</h1>
+    <section class="cartCards" id="shoppingCart">
+        <div class="cartCard">
+            <button class="cartCard__remove"></button>
+            <div class="cartCard__image-wrapper">
+                <img src="/static/images/dev/testToyImg.svg" alt="ToyImage" class="cartCard__image">
+            </div>
+            
+            <div class="card__name-wrapper">
+                <p class="cartCard__name">LEGO: Tbd-Disney 6 Disney Princess</p>
+                <p class="cartCard__description">With a unique set of "The Book of fabulous ...</p>
+            </div>
+            <div class="card__amount-wrapper">
+                <button class="cartCard__swither" id="cartCardMinus">-</button>
+                <input type="text" class="cartCard__amount" value="1" disabled="">
+                <button class="cartCard__swither" id="cartCardPlus">+</button>
+            </div>
+            <div class="cartCard__price-wrapper">
+                <p class="cartCard__price">8 725</p>
+            </div>
+        </div>
+    </section>
+    <form class="cartForm" id="cartForm">
+        <input type="text" class="cartForm__input" name="fullname" placeholder="Full name" id="fullname">
+        <input type="text" class="cartForm__input" name="phone" id="phone" placeholder="Phone number">
+        <input type="text" class="cartForm__input" name="address" id="address" placeholder="Address">
+        <p class="cartForm__total" id="total">Total:</p>
+        <button class="cartForm__button" type="submit">Order</button>
+    </form>
+</main>
+{% endblock %}
+
+{% block script %}
+<script src="/static/scripts/pages/cart.js" type="module"></script>
+{% endblock %}

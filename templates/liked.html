@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='pages/toys.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pages/card.css') }}">
+    <title>Erke</title>
+{% endblock %}
+
+{% block main %}
+<main class="main">
+    <h1 class="h1-heading-of-page h1-corrector">Liked</h1>
+    <section class="cards" id="liked">
+        
+
+    </section>
+</main>
+{% endblock %}
+
+{% block script %}
+<script src="/static/scripts/pages/liked.js" type="module"></script>
+{% endblock %}

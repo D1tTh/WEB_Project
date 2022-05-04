@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='pages/productAdd.css') }}">
+{% endblock %}
+
+{% block main %}
+<main class="main">
+    <h1 class="h1-heading-of-page h1-corrector">New product</h1>
+    <form class="form" id="new-product-form" enctype="multipart/form-data" method="POST" novalidate>
+        <div class="form__input-container">
+            <label class="form__label" for="productname">Product name</label>
+            <input type="text" class="form__input" name="productname" id="productname">
+            <p id="fullname-error" class="form__input-error"></p>
+        </div>
+
+        <div class="form__input-container">
+            <label class="form__label" for="category">Category</label>
+            <input type="text" class="form__input" name="category" id="category">
+            <p id="fullname-error" class="form__input-error"></p>
+        </div>
+
+        <div class="form__input-container">
+            <label class="form__label" for="country">Country</label>
+            <input type="text" class="form__input" name="country" id="country">
+            <p id="fullname-error" class="form__input-error"></p>
+        </div>
+
+        <div class="form__input-container">
+            <label class="form__label" for="company">Company</label>
+            <input type="text" class="form__input" name="company" id="company">
+            <p id="fullname-error" class="form__input-error"></p>
+        </div>
+
+        <div class="form__input-container">
+            <label class="form__label" for="quantity_in_stock">Quantity in stock</label>
+            <input type="number" class="form__input" name="quantity_in_stock" id="quantity_in_stock">
+            <p id="fullname-error" class="form__input-error"></p>
+        </div>
+
+        <div class="form__input-container">
+            <label class="form__label" for="price">Price</label>
+            <input type="text" class="form__input" name="price" id="price">
+            <p id="fullname-error" class="form__input-error"></p>
+        </div>
+
+        <div class="form__input-container">
+            <label class="form__label" for="product_description">Product description</label>
+            <input type="text" class="form__input" name="product_description" id="product_description">
+            <p id="fullname-error" class="form__input-error"></p>
+        </div>
+
+        <div class="form__input-container">
+            <label class="form__label" for="product_gender">Product gender</label>
+            <input type="text" class="form__input" name="product_gender" id="product_gender">
+            <p id="fullname-error" class="form__input-error"></p>
+        </div>
+
+        <div class="form__input-container">
+            <label class="form__label" for="age">Age</label>
+            <input type="number" class="form__input" name="age" id="age">
+            <p id="fullname-error" class="form__input-error"></p>
+        </div>
+
+        <div class="form__input-container">
+            <label class="form__label" for="measure_unit">Measure unit</label>
+            <input type="text" class="form__input" name="measure_unit" id="measure_unit">
+            <p id="fullname-error" class="form__input-error"></p>
+        </div>
+
+        <button type="submit" class="form__submitBtn">Add</button>
+
+    </form>
+
+    <form action="/addImageofToy/" id="img" enctype="multipart/form-data" name="img" method="POST">
+        <input type="text" name="prodid" id="prodid">
+        <input type="file" id="mainImage" name="mainImage">
+        <button type="submit">Save</button>
+    </form>
+
+
+</main>
+{% endblock %}
+
+{% block script %}
+<script src="/static/scripts/pages/productAdd.js" type="module"></script>
+{% endblock %}

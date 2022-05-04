@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='pages/profile.css') }}">
+{% endblock %}
+
+{% block main %}
+<main class="main">
+    <h1 class="h1-heading-of-page h1-corrector">{{user.user_name}}'s page</h1>
+    
+    <div class="userinfo userinfoOther">
+        <div class="user">
+            <img class="user__image" {% if user.avatar_name != None %} src="/static/images/users/{{ user.user_name }}/{{ user.avatar_name }}" {% else %} src="/static/images/dev/test.png" {% endif %} alt="userImage">
+            <p id="username" name="username" class="user__name">{{ user.user_name }}</p>
+        </div>
+        <div class="userdata userdataOther">
+            <img src="/static/images/dev/girl.profile.svg" alt="girl" class="userdataOther__illus">
+            <h2 class="h2-heading-of-page h2-corrector">Information about {{user.user_name}}:</h2>
+            
+            <div class="userdata__input-wrapper userdata__input-wrapperOther">
+                <p class="userdata__label userdata__labelOther">First name</p>
+                <p class="userdata__p">{% if user.first_name != None %} {{ user.first_name }} {% endif %}</p>
+            </div>
+
+            <div class="userdata__input-wrapper userdata__input-wrapperOther">
+                <p class="userdata__label userdata__labelOther">Last name</p>
+                <p  class="userdata__p">{% if user.last_name != None %}{{ user.last_name }}{% endif %}</p>
+            </div>
+
+            <div class="userdata__input-wrapper userdata__input-wrapperOther">
+                <p class="userdata__label userdata__labelOther">Middle name</p>
+                <p class="userdata__p">{% if user.middle_name != None %}{{ user.middle_name }}{% endif %}</p>
+            </div>
+
+            <div class="userdata__input-wrapper userdata__input-wrapperOther">
+                <p class="userdata__label userdata__labelOther">Phone number</p>
+                <p class="userdata__p">{% if user.phone != None %}{{ user.phone }}{% endif %}</p>
+            </div>
+
+            <div class="userdata__input-wrapper userdata__input-wrapperOther">
+                <p class="userdata__label userdata__labelOther">Email</p>
+                <p class="userdata__p">{% if user.email_address != None %}{{ user.email_address }}{% endif %}</p>
+            </div>
+
+            <div class="userdata__input-wrapper userdata__input-wrapperOther">
+                <p class="userdata__label userdata__labelOther">City</p>
+                <p class="userdata__p">{% if user.city != None %}{{ user.city }}{% endif %}</p>
+            </div>
+
+            <div class="userdata__input-wrapper userdata__input-wrapperOther">
+                <p class="userdata__label userdata__labelOther">Home address</p>
+                <p class="userdata__p">{% if user.address != None %}{{ user.address }}{% endif %}</p>
+            </div>
+        </div>
+    </div>
+    
+</main>
+{% endblock %}

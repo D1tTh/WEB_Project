@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='pages/toys.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pages/card.css') }}">
+    <title>Toys</title>
+{% endblock %}
+
+{% block main %}
+<main class="main">
+    <h1 class="h1-heading-of-page h1-corrector">Bestsellers</h1>
+    <section class="cards" id="bestsellers">
+        <div class="card">
+            <div class="card__image-wrapper">
+                <img src="/static/images/dev/testToyImg.svg" alt="ToyImage" class="card__image">
+            </div>
+            <div class="card__name-wrapper">
+                <p class="card__name">LEGO: Tbd-Disney 6 Disney Princess</p>
+            </div>
+
+            <div class="card__like-price-wrapper">
+                <p class="card__price">8 725</p>
+                <button type="button" class="card__like"></button>
+            </div>
+            <div class="card__buttons-wrapper">
+                <button type="button" id="addCardBtn" class="card__button card__button_active">Add</button>
+                <a href="#" id="more" class="card__button">More</a>
+            </div>
+        </div>
+
+    </section>
+</main>
+{% endblock %}
+
+{% block script %}
+<script src="../static/scripts/pages/toys.js" type="module"></script>
+{% endblock %}

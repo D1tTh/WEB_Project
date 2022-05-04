@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='pages/profile.css') }}">
+    <title>My page</title>
+{% endblock %}
+
+{% block main %}
+{% if current_user.is_authenticated %}
+<main class="main">
+    <h1 class="h1-heading-of-page h1-corrector">My page</h1>
+
+    <div class="userinfo">
+        <form action="/save_avatar/" class="user" id="userForm" name="userForm" enctype="multipart/form-data" method="POST">
+            <img class="user__image" {% if current_user.avatar_name != None %} src="../static/images/users/{{ current_user.user_name }}/{{ current_user.avatar_name }}" {% else %} src="../static/images/dev/test.png" {% endif %} alt="userImage">            
+            <p id="username" name="username" class="user__name">{{ current_user.user_name }}</p>
+            <label class="user__label" for="edit">Edit</label>
+            <input type="file" id="edit" name="edit" class="user__input">
+            <button type="submit" class="userdata__submitBtn userdata__submitBtn_disactive" id="userformSubmitBtn">Save</button>
+        </form>
+        <form action="/save_data/" class="userdata" id="userdata" name="userdata" enctype="multipart/form-data" method="POST">
+            <h2 class="h2-heading-of-page h2-corrector">Information about me:</h2>
+
+            <div class="userdata__input-wrapper">
+                <label for="" class="userdata__label">First name</label>
+                <input type="text" class="userdata__input" id="firstname" name="firstname" value="{% if current_user.first_name != None %}{{ current_user.first_name }}{% endif %}">
+            </div>
+
+            <div class="userdata__input-wrapper">
+                <label for="lastname" class="userdata__label">Last name</label>
+                <input type="text" class="userdata__input" id="lastname" name="lastname" value="{% if current_user.last_name != None %}{{ current_user.last_name }}{% endif %}">
+            </div>
+
+            <div class="userdata__input-wrapper">
+                <label for="middlename" class="userdata__label">Middle name</label>
+                <input type="text" class="userdata__input" id="middlename" name="middlename" value="{% if current_user.middle_name != None %}{{ current_user.middle_name }}{% endif %}">
+            </div>
+
+            <div class="userdata__input-wrapper">
+                <label for="phonenumber" class="userdata__label">Phone number</label>
+                <input type="text" class="userdata__input" id="phonenumber" name="phonenumber" value="{% if current_user.phone != None %}{{ current_user.phone }}{% endif %}">
+            </div>
+
+            <div class="userdata__input-wrapper">
+                <label for="email" class="userdata__label">Email</label>
+                <input type="text" class="userdata__input" id="email" name="email" value="{% if current_user.email_address != None %}{{ current_user.email_address }}{% endif %}">
+                {% if not current_user.isverified %}
+                    <p class="userdata__email-verify">verify your email</p>
+                {% endif %}
+            </div>
+
+            <div class="userdata__input-wrapper">
+                <label for="city" class="userdata__label">City</label>
+                <input type="text" class="userdata__input" id="city" name="city" value="{% if current_user.city != None %}{{ current_user.city }}{% endif %}">
+            </div>
+
+            <div class="userdata__input-wrapper">
+                <label for="homeaddress" class="userdata__label">Home address</label>
+                <input type="text" class="userdata__input" id="homeaddress" name="homeaddress" value="{% if current_user.address != None %}{{ current_user.address }}{% endif %}">
+            </div>
+            <div class="userdata__submit-wrapper">
+                <button type="submit" class="userdata__submitBtn">Save</button>
+            </div>
+        </form>
+    </div>
+
+</main>
+{% else %}
+<div style="position: fixed; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: white; z-index: 10000;">
+    <p style="font-size: 36px; text-align: center;"> <a style="color: #EF476F;" href="/signing/">Log in</a> to open your profile!</p>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block script %}
+<script src="../static/scripts/pages/profile.js"></script>
+{% endblock %}

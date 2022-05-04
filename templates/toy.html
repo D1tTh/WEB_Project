@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='pages/toys.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pages/toy.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pages/card.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pages/profile.css') }}">
+    <title>{{ toy.product_name }}</title>
+{% endblock %}
+
+{% block main %}
+<main class="main">
+    <h1 class="h1-heading-of-page h1-corrector">{{ toy.product_name }}</h1>
+    <div class="userinfo">
+        <div class="user" id="userForm" name="userForm">
+            <img class="card__image-wrapper" src="../static/images/products/{{ toy.id }}/{{ toy.product_image_name }}" alt="userImage">
+        </div>
+        <div class="forphomedatauser" id="userdata" name="userdata">
+            <div class="text-wrapper">
+                <p for="homeaddress" class="text">Name</p>
+                <p for="homeaddress" class="text">{{ toy.product_name }}</p>
+            </div>
+            <div class="text-wrapper">
+                <p for="homeaddress" class="text">Product id</p>
+                <p for="homeaddress" class="text" id="toyid">{{ toy.id }}</p>
+            </div>
+            <div class="text-wrapper">
+                <p for="homeaddress" class="text">Description</p>
+                <p for="homeaddress" class="text">{{ toy.product_description }}</p>
+            </div>
+
+            <div class="text-wrapper">
+                <p for="homeaddress" class="text">Country</p>
+                <p for="homeaddress" class="text">{{ toy.country }}</p>
+            </div>
+
+            <div class="text-wrapper">
+                <p for="homeaddress" class="text">Company</p>
+                <p for="homeaddress" class="text">{{ toy.company }}</p>
+            </div>
+
+            <div class="text-wrapper">
+                <p for="homeaddress" class="text">Quantity in stock</p>
+                <p for="homeaddress" class="text">{{ toy.quantity_in_stock }}</p>
+            </div>
+
+            <div class="text-wrapper">
+                <p for="homeaddress" class="text">Price</p>
+                <p for="homeaddress" class="text">{{ toy.product_price }} KZT</p>
+            </div>
+
+            <div class="text-wrapper">
+                <p for="homeaddress" class="text">Gender</p>
+                <p for="homeaddress" class="text">{{ toy.product_gender }}</p>
+            </div>
+
+            <div class="text-wrapper">
+                <p for="homeaddress" class="text">Age</p>
+                <p for="homeaddress" class="text">{{ toy.age }}+</p>
+            </div>
+
+            <div class="submit-wrapper">
+                <button type="submit" class="userdata__submitBtn">Add</button>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block script %}
+<script src="/static/scripts/pages/toy.js" type="module"></script>
+{% endblock %}

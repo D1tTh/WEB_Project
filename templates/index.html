@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="kz">
+<html lang="ru">
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="The main purpose of the site is to help customers of the Erke toy store easily order a toy">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Tynyshtyq Dastan">
+    <title>Erke</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pages/index.css') }}">
+    <link rel="icon" href="/static/images/dev/LogoErkeWhiteBack.svg">
+
+</head>
+
+<body class="main-page main-page_dark">
+    <header class="header index-header">
+
+        <img class="navbar__menuBtn" src="/static/images/dev/navbar__menu.svg" id="navbar__menuBtn"></img>
+        <nav class="navbar navbar_nonunderline">
+            <ul class="navbar__list">
+                <li class="navbar__elem"><a href="/" id="navbarMain" class="navbar__linktext navbar__linktext_white">Main</a></li>
+                <li class="navbar__elem"><a href="/toys/" class="navbar__linktext navbar__linktext_white">Toys</a></li>
+                <li class="navbar__elem"><a href="/shopping_cart/" class="navbar__linktext navbar__linktext_white">Cart</a></li>
+                <li class="navbar__elem"><a href="/about_erke/" class="navbar__linktext navbar__linktext_white">About</a></li>
+            </ul>
+
+            <ul class="navbar__list">
+                {% if current_user.is_authenticated %}
+                <li class="navbar__elemico"><a href="/profile/" class="navbar__linkico" id="navbarAbout"><img {% if current_user.avatar_name != None %} src="/static/images/users/{{ current_user.user_name }}/{{ current_user.avatar_name }}" {% else %} src="/static/images/dev/test.png" {% endif %} alt="avatar" class="navbar__avatar"></a></li>
+                    <li class="navbar__elemico navbar__elem_show" id="likedDescktop"><a href="/liked/" class="navbar__linkico"><img src="/static/images/dev/wh_like.svg" class="navbar__ico" alt="loved"><img src="/static/images/dev/filled_like.svg" class="navbar__ico_hover" alt="loved"></a></li>
+                    
+                    <li class="navbar__elem navbar__elem_hide"><a href="/liked/" class="navbar__linktext navbar__linktext_white" id="likedMobile">Liked</a></li>
+                    <li class="navbar__elem navbar__elem_hide"><a href="/logout/" class="navbar__linktext navbar__linktext_white" >Log out</a></li>
+                    <li class="navbar__elemico navbar__elem_show" id="logoutDescktop"><a href="/logout/" class="navbar__linkico"><img src="/static/images/dev/wh_profile.svg" class="navbar__ico" alt="loved"><img src="/static/images/dev/pg_profile.svg" class="navbar__ico_hover" alt="loved"></a></li>
+                {% else %}
+                    <li class="navbar__elemico"><a href="/signing/" class="navbar__linktext navbar__linktext_white">Sign in/up</a></li>  
+                {% endif %}
+
+            </ul>
+        </nav>
+    </header>
+
+    <main class="index-main">
+        <div class="index-main__headings-wrapper">
+            <h1 class="index-main__heading">erke</h1>
+            <p class="index-main__subheading">buy whatever you want</p>
+            <img src="/static/images/dev/indexshop.svg" alt="shop" class="index-main__shop">
+        </div>
+        
+    </main>
+    <a href="https://www.instagram.com/de_fida_" target="_blank" class="index-main__footertext">by DeFida</a>
+<script src="/static/scripts/pages/index.js"></script>
+</body>
+
+</html>
